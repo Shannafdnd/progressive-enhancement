@@ -8,16 +8,27 @@
 		<style>
 			section {
 				display: flex;
-				scroll-behavior: auto;
+				scroll-behavior: smooth;
 				width: 40em;
-				scroll-snap-type: mandatory;
+				scroll-snap-type: x mandatory;
+				overflow: auto;
+			}
+
+			section {
+				-ms-overflow-style: none;  /* Internet Explorer 10+ */
+				scrollbar-width: none;  /* Firefox */
+			}
+			section::-webkit-scrollbar { 
+				display: none;  /* Safari and Chrome */
 			}
 
 			article {
+				scroll-snap-align: center;
 				background-color: var(--purple);
 				font-size: larger;
 				font-weight: bolder;
 				font-style: italic;
+				min-width: 30em;
 			}
 
 			article:nth-of-type(2n) {
@@ -27,15 +38,31 @@
 			article:nth-of-type(3n +1) {
 				background-color: var(--green);
 			}
+
+			#button-container {
+				display: flex;
+				justify-content: space-between;
+				margin-top: -2.5rem;
+				padding-left: 0.5rem;
+				width: 39em;
+				z-index: 1;
+			}
 		</style>
 		<script type="module">
+			const scrollContainer = document.getElementById("scroll-container");
+			document.getElementById("next").addEventListener("click", () => {
+				scrollContainer.scrollBy(scrollContainer.clientWidth, 0);
+			})
+			document.getElementById("prev").addEventListener("click", () => {
+				scrollContainer.scrollBy(-scrollContainer.clientWidth, 0);
+			})
 			/* Schrijf hier eventueel je client-side JavaScript */
 		</script>
 	</head>
 	<body>
 		<h1>Carrousel</h1>
 
-		<section>
+		<section id="scroll-container">
 			<article> 
 				<blockquote>“Websites leren bouwen, én praktijkervaring opdoen?”</blockquote> 
 			</article>
@@ -60,6 +87,11 @@
 				<blockquote>“Een Associate degree-opleiding is een tweejarige hbo-opleiding op niveau 5”</blockquote>
 			</article>
 		</section>
+
+		<div id="button-container">
+			<button id="prev" class="fdnd-button">Vorige</button>
+			<button id="next" class="fdnd-button">Volgende</button>
+		</div>
 
 		<details open>
 			<summary>Demo video</summary>

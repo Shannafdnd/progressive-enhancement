@@ -7,6 +7,34 @@
 		<link href="assets/styles.css" rel="stylesheet">
 		<style>
 			/* Schrijf hier gewoon je CSS voor dit component */
+			@supports (field-sizing: content) {
+				#favorite-teacher {
+					field-sizing: content;
+				}
+			}
+
+			#color-picker {
+				all: unset;
+				position: relative;
+				z-index: 0;
+				cursor: pointer;
+				display: block;
+				width: 40rem;
+				height: 5rem;
+			}
+
+			#teacher-container {
+				position: absolute;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 40rem;
+				height: 5rem;
+
+				#favorite-teacher {
+					z-index: 1;
+				}
+			}
 
 			/* Hint: Dit component kun je volledig met HTML en CSS bouwen */
 
@@ -21,25 +49,30 @@
 
 			<!-- Hint: hoe kun je aan een invoerelement een lijst meegeven? -->
 
-			<!-- Een lijstje met docenten
-			Berat Zekaj
-			Charley Muhren
-			Cyd Stumpel
-			Dorien Drees
-			Joost Faber
-			Justus Sturkenboom
-			Koop Reijnders
-			Krijn Hoetmer
-			Sanne 't Hooft
-			Suus ten Voorde
-			-->
+			<div id="teacher-container">
+				<input list="teachers" id="favorite-teacher" name="ice-cream-choice" />
+			</div>
+			<datalist id="teachers">
+				<option value="Berat Zekaj"></option>
+				<option value="Charley Muhren"></option>
+				<option value="Cyd Stumpel"></option>
+				<option value="Dorien Drees"></option>
+				<option value="Joost Faber"></option>
+				<option value="Justus Sturkenboom"></option>
+				<option value="Koop Reijnders"></option>
+				<option value="Krijn Hoetmer"></option>
+				<option value="Sanne 't Hooft"></option>
+				<option value="Suus ten Voorde"></option>
+			</datalist>
 
-			<!-- De kleurcodes van FDND:
-			#A675F5
-			#050542
-			#66E5BF
-			#FFFC86
-			-->
+			<input type="color" id="color-picker" list="colors">
+			
+			<datalist id="colors">
+				<option value="#A675F5"></option>
+				<option value="#050542"></option>
+				<option value="#66E5BF"></option>
+				<option value="#FFFC86"></option>
+			</datalist>
 
 		</form>
 

@@ -7,12 +7,63 @@
 		<link href="assets/styles.css" rel="stylesheet">
 		<style>
 			/* Schrijf hier gewoon je CSS voor dit component */
+			input {
+				opacity: 0;
+				width: 0;
+				height: 0;
+				margin: 0;
+			}
 
+			label {
+				display: inline-block;
+				width: 90vw;
+				height: 20rem;
+				text-align: center;
+				cursor: pointer;
+				background-position: center;
+				object-fit: cover;
+				background-color: var(--green);
+				border: 3px solid black;
+				border-radius: 5px;
+				margin: 10px;
+				font-weight: 800;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
 			/* Hint: Denk niet te ingewikkeld */
 		</style>
 		<script type="module">
 			/* Schrijf hier eventueel je client-side JavaScript */
-			
+			const dropZone = document.getElementById("drop-zone");
+			const fileInput = document.getElementById("file");
+
+			/* https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL */
+			function updateBackground() {
+				const reader = new FileReader();
+				reader.onload = (e) => {
+					dropZone.style["background-image"] = `url(${e.target.result})`;
+				}
+				if (fileInput.files.length > 0) {
+					reader.readAsDataURL(fileInput.files[0]);
+				}
+			}
+
+			/* https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop */
+			dropZone.addEventListener("drop", (e) => {
+				e.preventDefault();
+				
+				fileInput.files = e.dataTransfer.files;
+				updateBackground();
+			});
+
+			dropZone.addEventListener("dragover", (e) => {
+				e.preventDefault();
+			});
+
+			fileInput.addEventListener("change", () => {
+				updateBackground();
+			})
 			/* Hint: Met een paar regels kom je al een heel eind */
 
 			/* Hint: Via JS kun je Custom Properties in CSS aanpassen */
@@ -24,7 +75,8 @@
 		<!-- Voor het uploaden van een bestand heb je altijd een formulier nodig.
 			 Dus die krijg je alvast. Maak je over de server niet druk; het gaat om de UI. -->
 		<form method="post">
-
+			<label for="file" id="drop-zone">Selecteer je afbeelding</label>
+			<input type="file" id="file" accept="image/*">
 			<!-- Hint: Denk niet te ingewikkeld -->
 
 			<button type="submit" class="fdnd-button">Uploaden</button>

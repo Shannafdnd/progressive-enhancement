@@ -55,6 +55,14 @@ Maak minimaal 3 van onderstaande user interface componenten:
 - File upload met preview
 - Tabbladen
 
+#### voor sprint 11
+
+Voor sprint 11 is het het interessantst om componenten uit je ontwerp voor de leertaak in sprint 11 te gebruiken. 
+Je mag ook componenten uit bovenstaande lijst gebruiken.
+Het is een individuele opdracht - dus elke teamlid werkt eigen componenten uit (of maakt een substantieel andere uitwerking van dezelfde component).
+
+Ieder teamlid werkt minimaal 2 componenten uit.
+
 
 ### Aanpak (per component)
 
@@ -68,6 +76,9 @@ Maak minimaal 3 van onderstaande user interface componenten:
 8. Test deze “enhanced” versie(s) op verschillende browsers en devices.
 9. Documenteer je experiment.
 
+#### voor sprint 11
+10. In sprint 11 is het doel pleasurable (ga lekker los).
+11. Documenteer je experiment.
 
 ### Bronnen bouwfase
 
